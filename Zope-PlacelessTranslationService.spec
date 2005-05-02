@@ -1,6 +1,6 @@
 %define 	zope_subname	PlacelessTranslationService
 Summary:	PTS is, a translation service for Zope
-Summary(pl):	PTS jest serwisem, pomagaj±cym lokalizowaæ serwisy Zope
+Summary(pl):	PTS - us³uga pomagaj±ca lokalizowaæ us³ugi Zope
 Name:		Zope-%{zope_subname}
 Version:	1.0.1
 Release:	1
@@ -11,11 +11,11 @@ Source0:	http://dl.sourceforge.net/collective/PlacelessTranslationService-%{vers
 URL:		http://plone.org/products/pts/
 BuildRequires:	python
 %pyrequires_eq	python-modules
-Requires:	Zope
 Requires(post,postun):	/usr/sbin/installzopeproduct
+Requires:	Zope
+Conflicts:	Zope-CMFPlone <= 2.0.5-4
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-Conflicts:	Zope-CMFPlone <= 2.0.5-4
 
 %description
 PTS is, a translation service. It's a zope-wide service, which reads
@@ -23,14 +23,12 @@ PTS is, a translation service. It's a zope-wide service, which reads
 these translations to Zope software when requested.
 
 %description -l pl
-PTS jest serwisem, pomagaj±cym lokalizowaæ serwisy Zope. Czyta pliki 
-formatu "PO" zawieraj±ce t³umaczenia i udostêpnia te t³umaczenia, 
+PTS jest us³ug± pomagaj±c± lokalizowaæ us³ugi Zope. Czyta pliki
+formatu "PO" zawieraj±ce t³umaczenia i udostêpnia te t³umaczenia,
 kiedy odpowiedni produkt o to poprosi.
 
 %prep
 %setup -q -c
-
-%build
 
 %install
 rm -rf $RPM_BUILD_ROOT

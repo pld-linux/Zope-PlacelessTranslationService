@@ -2,12 +2,12 @@
 Summary:	PTS is, a translation service for Zope
 Summary(pl):	PTS - us³uga pomagaj±ca lokalizowaæ us³ugi Zope
 Name:		Zope-%{zope_subname}
-Version:	1.0.1
+Version:	1.2.0
 Release:	1
 License:	GPL v2
 Group:		Development/Tools
 Source0:	http://dl.sourceforge.net/collective/PlacelessTranslationService-%{version}.tar.gz
-# Source0-md5:	755fa9cbc95dbd5cb1a609a09dca5f68
+# Source0-md5:	797e36a7a532c9a43a7bab21b7923d7f
 URL:		http://plone.org/products/pts/
 BuildRequires:	python
 %pyrequires_eq	python-modules
@@ -29,11 +29,13 @@ kiedy odpowiedni produkt o to poprosi.
 
 %prep
 %setup -q -c
+find . -type d -name .svn | xargs rm -rf
+rm -rf %{zope_subname}/doc/license.txt
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_datadir}/%{name}
-cp -af %{zope_subname}/{i18n,tests,www,*.py,version.txt} $RPM_BUILD_ROOT%{_datadir}/%{name}
+cp -af %{zope_subname}/{bin,i18n,tests,www,*.py,version.txt} $RPM_BUILD_ROOT%{_datadir}/%{name}
 
 %py_comp $RPM_BUILD_ROOT%{_datadir}/%{name}
 %py_ocomp $RPM_BUILD_ROOT%{_datadir}/%{name}
@@ -59,5 +61,5 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%doc %{zope_subname}/doc/readme.txt %{zope_subname}/NEWS.txt
+%doc %{zope_subname}/doc/*
 %{_datadir}/%{name}

@@ -2,12 +2,12 @@
 Summary:	PTS is, a translation service for Zope
 Summary(pl):	PTS - us³uga pomagaj±ca lokalizowaæ us³ugi Zope
 Name:		Zope-%{zope_subname}
-Version:	1.2.1
+Version:	1.2.2
 Release:	1
 License:	GPL v2
 Group:		Development/Tools
-Source0:	http://dl.sourceforge.net/collective/PlacelessTranslationService-%{version}.tar.gz
-# Source0-md5:	5a458f20b78e949319925b919b456a66
+Source0:	http://plone.org/products/pts/releases/%{version}/PlacelessTranslationService-%{version}.tar.gz
+# Source0-md5:	24f91c1557189e1271b087adcb642828
 URL:		http://plone.org/products/pts/
 BuildRequires:	python
 %pyrequires_eq	python-modules

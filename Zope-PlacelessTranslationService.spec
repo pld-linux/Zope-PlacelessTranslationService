@@ -10,6 +10,7 @@ Source0:	http://plone.org/products/pts/releases/%{version}/PlacelessTranslationS
 # Source0-md5:	c081dcc7379478e5dd9500419b2d557a
 URL:		http://plone.org/products/pts/
 BuildRequires:	python
+BuildRequires:	rpmbuild(macros) >= 1.268
 %pyrequires_eq	python-modules
 Requires(post,postun):	/usr/sbin/installzopeproduct
 Requires:	Zope
@@ -47,16 +48,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 /usr/sbin/installzopeproduct %{_datadir}/%{name} %{zope_subname}
-if [ -f /var/lock/subsys/zope ]; then
-	/etc/rc.d/init.d/zope restart >&2
-fi
+%service -q zope restart
 
 %postun
 if [ "$1" = "0" ]; then
 	/usr/sbin/installzopeproduct -d %{zope_subname}
-	if [ -f /var/lock/subsys/zope ]; then
-		/etc/rc.d/init.d/zope restart >&2
-	fi
+	%service -q zope restart
 fi
 
 %files

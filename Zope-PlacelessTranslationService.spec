@@ -1,6 +1,6 @@
 %define 	zope_subname	PlacelessTranslationService
 Summary:	PTS is, a translation service for Zope
-Summary(pl.UTF-8):   PTS - usługa pomagająca lokalizować usługi Zope
+Summary(pl.UTF-8):	PTS - usługa pomagająca lokalizować usługi Zope
 Name:		Zope-%{zope_subname}
 Version:	1.2.6
 Release:	1
